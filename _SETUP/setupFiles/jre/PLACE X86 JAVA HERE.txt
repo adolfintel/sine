@@ -1,0 +1,2 @@
+Download java for win32 and place the files here (bin, lib, etc.)
+Note that Java 7 is the last version that supports XP!

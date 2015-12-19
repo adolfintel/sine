@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" type="text/css" href="style.css" />
+    </head>
+    <body>
+        <h2>Fondamenti sulla creazione di Preset</h2>
+        <h3>Prima di iniziare</h3>
+        Per prima cosa, devi cercare le frequenze appropriate.<br/>
+        Puoi trovare alcune frequenze <a href="frequencies_it_IT.html">quì</a>, e ancora di più cercando su Internet.<br/>
+		Per esempio, vogliamo fare un semplice Preset per aiutare il sonno, dunque inizieremo a 10Hz (sveglio e cosciente) e diminuiremo lentamente fino a 0.5Hz (sonno molto profondo).<br/>
+		Ricorda di non cambiare frequenza bruscamente, né troppo di frequente: servono 10-30 secondi affinchè il cervello si adatti a una nuova frequenza.
+        <h3>Nuovo Preset</h3>
+        Apri il menu File e clicca Nuovo, poi inserisci i dettagli del Preset. Potrai cambiarli dopo.
+        <div><img src="presetDesign_1.png"/></div>
+        5 minuti è troppo corto, dobbiamo aumentare la lunghezza. 1 ora dovrebbe bastare.
+        <div><img src="presetDesign_2.png"/></div>
+        <h3>Rumore di sottofondo</h3>
+        Come già detto, il rumore di sottofondo è molto importante: averne troppo poco o non averne abbastanza può compromettere l'efficacia del Preset.<br/>
+        Come regola generale, inizia con una buona quantità di rumore, poi diminuisci ogni volta che vuoi dare "enfasi" a una certa frequenza.<br/>
+        Nel nostro caso, direi: inizia con parecchio rumore, poi scendi fino a molto poco rumore.
+        <div><img src="presetDesign_3.png"/></div>
+        Come puoi vedere, ho creato un breve fade-in (10 secondi) e un fade-out più lungo (1 minuto).
+        Ricorda di usare lo zoom per avere precisione.
+        <h3>Traccia di Entrainment</h3>
+        Ora creiamo le pulsazioni vere e proprie.<br/>
+        Come detto, inizieremo a 10Hz per poi scendere fino a 0.5Hz con alcuni gradini.<br/>
+        <div><img src="presetDesign_4.png"/></div>
+        E ora il Volume. Ricorda di usare gli stessi fade-in e fade-out usati per la traccia del rumore.<br/>
+        Come regola generale, l'envelope del Volume è sempre al 100%. In questo Preset però ridurremo il volume alla fine del Preset, così che dia meno fastidio mentre si tenta di addormentarsi.<br/>
+        <div><img src="presetDesign_5.png"/></div>
+        E per ultima, la Frequenza Base. Tipicamente è costante.<br/>
+        Suggerire una frequenza tra 220 e 440Hz.
+        <div><img src="presetDesign_6.png"/></div>
+        Se vuoi, puoi anche impostare il volume principale della traccia:
+        <div><img src="presetDesign_7.png"/></div>
+        <h3>Accordi e funzioni avanzate</h3>
+        Se vuoi, puoi inserire più tracce di Entrainment nel Preset, ognuna delle quali può fare cose (potenzialmente) diverse.<br/>
+        Per esempio, ora cloneremo la nostra traccia di Entrainment, cambiando la frequenza base a 880Hz e riducendo il volume della traccia al 70% per fare un semplice accordo
+        <div><img src="presetDesign_8.png"/></div>
+        <h3>Testare il Preset</h3>
+        Prima di pubblicare il tuo lavoro, dovresti testarlo per assicurarti che funzioni come previsto.<br/>
+        Utilizza il player in basso a sinistra per testarlo. Puoi anche modificare il Preset mentre lo ascolti.
+        <div><img src="presetDesign_9.png"/></div>
+        <h3>Ottimizzazione</h3>
+        Per via di come funziona LibBWEntrainment (la libreria al cuore di SINE), le prestazioni dipendono principalmente dalla densità di punti vicino al tempo corrente<br/>
+        Per esempio, se ci sono 4 punti entro 10 secondi, la complessità sarà alta. Se però gli stessi punti fossero sparsi entro 10 minuti, la complessità sarà molto più bassa.<br/>
+        Per migliorare le prestazioni del Preset, devi rimuovere i punti in eccesso, ed assicurarti di non avere più punti sovrapposti (si notano dal colore verde più intenso nel grafico).<br/>
+        La funzione Ottimizza nel menu Preset risolve la maggior parte di questi problemi.<br/>
+        Inoltre, se stai usando più tracce di Entrainment, assicurati di averne davvero bisogno.
+        <h3>Salva e condividi</h3>
+        Salva il Preset, e non dimenticarti di <a href="sharing_it_IT.html">condividere</a> il tuo lavoro con altri utenti di SINE.
+    </body>
+</html>

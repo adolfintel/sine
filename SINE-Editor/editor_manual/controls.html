@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" type="text/css" href="style.css" />
+    </head>
+    <body>
+        <h2>Editor controls</h2>
+        When you open the editor, it looks like this:
+        <div><img src="controls_1.png"/></div>
+        <h3>Menus</h3>
+        At the top of the window, you'll see the menu bar:
+        <ul>
+            <li>
+                File: Load/Save controls
+                <ul>
+                    <li>New: creates a new Preset. The template Preset is 5 minutes long, doesn't loop, and plays a constant 10Hz Isochronic tone at 440Hz</li>
+                    <li>Load: edit a .sin file. Note: if the Preset was created manually (for instance, with a text editor), it may not be possible to edit it in this editor</li>
+                    <li>Save: saves the Preset to the current file. If no file is loaded, a "save as" prompt appears</li>
+                    <li>Save As: saves the Preset to a file chosen by the user</li>
+                    <li>Export: Saves the Preset as a regular audio file. Warning: it is NOT possible to edit an exported Preset!</li>
+					<li>Share: Link to the preset sharing platform. See the <a href="sharing.html">Sharing section</a> of this manual for more info</li>
+                    <li>Import HBX Preset: Imports a Preset for HBX Binaural Player (with some limitations, explained below)</li>
+                    <li>Quit: exits the editor</li>
+                </ul>
+            </li>
+			<li>
+				Edit: this is for when you make mistakes
+				<ul>
+					<li>Undo: undoes the last operation</li>
+					<li>Redo: redoes an undone operation</li>
+				</ul>
+			</li>
+            <li>
+                Preset
+                <ul>
+					<li>Add Entrainment Track: adds a new Entrainment Track. The new Track plays a constant 10 Hz pulse, with a 440 Hz carrier, at full volume</li>
+                    <li>Clone selected Track: clones the currently selected Track. Only Entrainment Tracks can be cloned</li>
+                    <li>Delete selected Track: deletes the currently selected Track. Only Entrainment Tracks can be deleted, and you can't delete the last Entrainment Track</li>
+                    <li>Set duration: set the new length of the Preset and configure looping</li>
+                    <li>Calculate complexity: estimates the complexity of the Preset and tells you what kind of devices may have trouble playing it</li>
+                    <li>Optimize: removes useless points and tracks. Minor information loss is possible.</li>
+                </ul>
+            </li>
+            <li>
+                ?
+                <ul>
+                    <li>Help: opens this manual</li>
+                    <li>Online tutorial: shows a brief video tutorial</li>
+                    <li>About: shows information about the application</li>
+                </ul>
+            </li>
+        </ul>
+        <h3>Track selector</h3>
+        On the left, there's a list of all the Tracks in the Preset. See <a href="preset.html">Preset structure</a> to see how a Preset is structured.<br/>
+        Click on a Track, and its contents will be shown on the right.
+        <h3>Editing envelopes</h3>
+        The Background noise track and all the Entrainment Tracks contain envelopes.<br/>
+        Editing them is easy, but you'll need a mouse.<br/>
+        This is what an envelope might look like:
+        <div><img src="controls_2.png" /></div>
+        In this specific case, it's a Background noise envelope.<br/>
+        Each vertical line is a minute. Horizontal lines are there for your convenience.<br/>
+        The red area indicates values that may be too high.<br/>
+        As you can see there are several points: all of them have 2 coordinates: time and value.<br/>
+        If you move the mouse over the graph, it will show the coordinates of that point.<br/>
+        The green line indicates how the value changes over time.
+        <div><img src="controls_3.png" /></div>
+        If the mouse is over a Point, its coordinates are shown in blue.
+        <div><img src="controls_4.png" /></div>
+        Drag points with the left mouse button to change their coordinates.
+        <div><img src="controls_5.png" /></div>
+        Sometimes (like in the image above), the envelope may be very long and go out the screen: to move around, drag the scroll bar under the envelope, and use the mouse wheel to zoom in and out.
+        <div><img src="controls_6.png" /></div>
+        Now the envelope fits perfectly, and you can zoom in again if you need more precision.<br/>
+        To add a point, click anywhere in the graph where there isn't a point, and one will be added.
+        <div><img src="controls_7.png" /></div>
+        As you can see in the image above, the new point will be created at the time shown next to the mouse cursor, but won't have that value.<br/>
+        To delete a point, right click on it.
+        <div><img src="controls_8.png" /></div>
+        As you can see, now we only have one point, which means the envelope is a constant value. It is common to have constant values for the Base Frequency envelopes of Entrainment Track, as they usually don't change note.<br/>
+        Sometimes you may want to manually set the value of a point, you can do this by middle clicking or double clicking a point.
+        <div><img src="controls_9.png" /></div>
+        <h3>Setting length and loop settings</h3>
+        To set a new duration and configure looping, open the Preset menu and click Set duration.
+        <div><img src="controls_10.png" /></div>
+        Presets can last from 10 seconds to 9 hours, 59 minutes and 59 seconds, but they're usually 20-40 minutes long.<br/>
+        If you want to loop a part of the Preset, tick Loop:
+        <div><img src="controls_11.png" /></div>
+        In this example, we set the Preset to loop after 3 minutes.<br/>
+        Click Set to confirm.<br/>
+        Now all the envelopes will have a blue part, indicating that that part loops:
+        <div><img src="controls_12.png" /></div>
+		<h3>Undo/Redo</h3>
+		If you do something by accident, select Undo from the Edit menu to undo the action.
+		<div><img src="controls_14.png" /></div>
+		If you do undo an action by accident, select Redo from the Edit menu to redo the action.
+		<div><img src="controls_15.png" /></div>
+        <h3>Testing the Preset</h3>
+        Before sharing a Preset, you should test it. You can do it directly in the editor: click Play in the small player at the bottom.
+        <div><img src="controls_13.png" /></div>
+        The controls here are self-explanatory: hit Play to start playing the Preset, Pause to pause it, drag the bars to change position and volume, rewind to start from the beginning. When you're done, just pause it.<br/>
+		You can even make changes while the preview is running.<br/>
+        If your Preset has a loop, make sure there's no audible difference between where the start and the end of the looping section.
+        <h3>Now you know how to control the envelopes</h3>
+        Check out the <a href="presetDesign.html">next section</a> to learn how to make Presets.
+        <h3>Importing HBX Binaural Player Presets</h3>
+        HBX Binaural Player is another Brainwave Entrainment application we made, and has quite a lot of Presets.<br/>
+        This editor includes a simple Preset converter: open the File menu, click Import HBX Preset and select the Preset file.<br/>
+        If everything goes fine, you'll see it in the editor.<br/>
+        While importing usually works fine, there are some limitations:<ul>
+            <li>Interpolation factors are not supported: they will all be treated as linear (1)</li>
+            <li>The Binaural Frequencies must be between 0 and 40 Hz</li>
+            <li>All the volumes must be between 0 and 1</li>
+            <li>There may be some extra points in some envelopes (they're harmless, but will increase the preset's complexity)</li>
+        </ul>
+        Negative time values are supported.<br/>
+        You may also want to increase the Base Frequency.
+    </body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" type="text/css" href="style.css" />
+    </head>
+    <body>
+        <h2>Structure of a SINE Preset</h2>
+        A SINE preset consists in <span class="bold">1 background noise track</span> and <span class="bold">1+ Entrainment tracks</span>.<br/>
+        Each Entrainment track has a <span class="bold">track volume</span> and <span class="bold">3 envelopes</span>:an Entrainment Frequency envelope, a Volume envelope and a Base Frequency envelope.<br/>
+        The <span class="bold">Entrainment Frequency envelope</span> regulates the frequency of the Isochronic pulses. This application supports frequencies from 0 to 40Hz.<br/>
+        The <span class="bold">Volume envelope</span> regulates the volume of the pulses (not to be confused with the track volume, which is constant)<br/>
+        The <span class="bold">Base Frequency envelope</span> regulates the frequency of the sine wave that is used to create the pulses.<br/>
+        <br/>
+        Presets also have some information associated with: Title, Author and Description.<br/>
+        You can also make a part of a preset loop infinitely.<br/>
+        <br/>
+        If you load a Preset, you can see an example (resize this window if necessary):
+        <div><img src="preset_1.png"/></div>
+        As you can see on the left, this Preset has its information (shown on the right), a Background noise track and one Entrainment Track.<br/>
+        The preset is called "Quick Sleep (Enhanced edition)", it's made by dosse, the description says "Ported from HBX Binaural Player" (another application we made), it's 41 minutes and 5 seconds long and doesn't loop.<br/>
+        Here's what the Background noise track looks like in the editor:
+        <div><img src="preset_2.png"/></div>
+        And the Entrainment Track:
+        <div><img src="preset_3.png"/></div>
+        More info about how to read and edit the envelopes can be found in the <a href="controls.html">Editor controls</a> section of this manual.
+    </body>
+</html>

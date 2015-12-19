@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" type="text/css" href="style.css" />
+    </head>
+    <body>
+        <h2>Controlli dell'editor</h2>
+        Quando avvii l'editor, si presenta così:
+        <div><img src="controls_1.png"/></div>
+        <h3>Menu</h3>
+        In cima alla finestra, c'è la barra dei menu:
+        <ul>
+            <li>
+                File: Caricamento e salvataggio
+                <ul>
+                    <li>Nuovo: crea un nuovo Preset. Il Preset modello è di 5 minuti, non ha loop e riproduce una pulsazione costante di 10Hz con una frequenza base di 440Hz.</li>
+                    <li>Carica: modifica un file .sin. Nota: se il preset è stato creato manualmente (ad esempio con un editor di testi), potrebbe non essere possibile modificarlo in questo editor</li>
+                    <li>Salva: salva il Preset sul file corrente. Se non c'è un file aperto, si apre una finestra "salva con nome"</li>
+                    <li>Save con nome: salva il preset su un file scelto dall'utente</li>
+					<li>Esporta: Salva il Preset come un comune file audio. Attenzione: NON è possibile modificare Preset esportati!</li>
+                    <li>Condividi: collegamento alla piattaforma di condivisione Preset. Vedi la sezione <a href="sharing_it_IT.html">condivisione</a> di questo manuale per ulteriori informazioni</li>
+                    <li>Importa Preset HBX: Importa un Preset per HBX Binaural Player (con delle limitazioni mostrate sotto)</li>
+                    <li>Esci: chiude l'editor</li>
+                </ul>
+            </li>
+			<li>
+				Modifica: per quando si fanno errori
+				<ul>
+					<li>Annulla: annulla l'ultima operazione operation</li>
+					<li>Ripeti: ripete un'operazione annullata</li>
+				</ul>
+			</li>
+            <li>
+                Preset
+                <ul>
+					<li>Aggiungi traccia di Entrainment: inserisce una nuova traccia di Entrainment. Inizialmente riproduce una pulsazione costante a 10Hz con frequenza base di 440Hz, a volume massimo</li>
+                    <li>Clona traccia selezionata: clona la traccia correntemente selezionata. Solo le tracce di Entrainment si possono clonare</li>
+                    <li>Rimuovi traccia selezionata: cancella la traccia correntemente selezionata. Solo le tracce di Entrainment si possono rimuovere, e non puoi rimuovere l'ultima traccia di Entrainment</li>
+                    <li>Imposta durata: cambia la lunghezza del Preset e configura il loop</li>
+                    <li>Calcola complessità: stima la complessità del Preset e ti informa su quali dispositivi potrebbero avere problemi a riprodurlo</li>
+                    <li>Ottimizza: rimuove punti e tracce inutili. Una minima perdita di precisione è possibile.</li>
+                </ul>
+            </li>
+            <li>
+                ?
+                <ul>
+                    <li>Guida: apre questo manuale</li>
+                    <li>Tutorial online: Mostra un breve video tutorial</li>
+                    <li>Informazioni su SINE Editor: mostra informazioni sull'applicazione</li>
+                </ul>
+            </li>
+        </ul>
+        <h3>Selettore delle tracce</h3>
+        Sulla sinistra, c'è una lista di tutte le tracce nel Preset. Vedi <a href="preset.html">struttura Preset</a> per vedere come un Preset è strutturato.<br/>
+        Clicca su una traccia, e il suo contenuto sarà mostrato sulla destra.
+        <h3>Modificare gli Envelope</h3>
+        Le tracce di rumore di sottofondo e di Entrainment contengono degli envelope.<br/>
+        Modificarli è semplice, ma ti servirà un mouse.<br/>
+        Ecco come si presenta un Envelope:
+        <div><img src="controls_2.png" /></div>
+        In questo caso specifico, è un Envelope di rumore di sottofondo.<br/>
+        Ogni linea verticale rappresenta un minuto. Le linee orizzontali sono per la tua comodità.<br/>
+        L'area in rosso indica valori che potrebbero essere troppo alti.<br/>
+        Come vedi, ci sono diversi punti: ognuno di essi ha 2 coordinate: tempo e valore.<br/>
+        Muovendo il mouse 
+        If you move the mouse sopra al grafico, verranno mostrate le coordinate di quel punto.<br/>
+        La linea verde indica come il valore cambia nel tempo.
+        <div><img src="controls_3.png" /></div>
+        Se il mouse è sopra un punto, le sue coordinate saranno mostrate in blu.
+        <div><img src="controls_4.png" /></div>
+        Trascina i punti con il tasto sinitro del mouse per cambiarne le coordinate.
+        <div><img src="controls_5.png" /></div>
+        A volte (come nell'immagine sopra), un Envelope può essere molto lungo ed uscire dallo schermo: per spostarti, trascina la barra di scorrimento sotto l'envelope, e usa la rotella del mouse per zoomare.
+        <div><img src="controls_6.png" /></div>
+        Ora l'Envelope ci sta per intero, e puoi sempre zoomare di nuovo se serve più precisione.<br/>
+        Per aggiungere un punto, clicca ovunque nel grafico dove non c'è un punto, e ne verrà aggiunto uno.
+        <div><img src="controls_7.png" /></div>
+        Come puoi notare, il punto è creato alle coordinate temporali del cursore, ma non con quel valore.<br/>
+        Per cancellare un punto, fai click su di esso col tasto destro del mouse.
+        <div><img src="controls_8.png" /></div>
+        Come vedi, ora abbiamo un solo punto, che significa che l'Envelope è un valore costante. Avere valori costanti per la Frequenza Base è delle tracce di Entrainment è piuttosto comune, dato che raramente si cambia nota.<br/>
+        A volte potresti voler impostare manualmente il valore di un punto: lo puoi fare cliccandolo con il tasto centrale o facendoci doppio click.
+        <div><img src="controls_9.png" /></div>
+        <h3>Impostare lunghezza e loop</h3>
+        Per cambiare la lunghezza e configurare il loop, apri il menu Preset e clicca Imposta durata.
+        <div><img src="controls_10.png" /></div>
+        I Preset possono durare da 10 secondi fino a 9 ore, 59 minuti e 59 secondi, ma tipicamente durano 20-40 minuti.<br/>
+        Se vuoi far ripetere una parte di Preset, seleziona Loop:
+        <div><img src="controls_11.png" /></div>
+        In questo esempio facciamo ripetere la parte dopo i 3 minuti.<br/>
+        Clicca Imposta per confermare.<br/>
+        Ora tutti gli Envelope mostrano una parte in blu, che indica la parte che si ripete:
+        <div><img src="controls_12.png" /></div>
+		<h3>Annulla/Ripeti</h3>
+		Se fai qualcosa per sbaglio, seleziona Annulla dal menu Modifica per annullare l'ultima azione.
+		<div><img src="controls_14.png" /></div>
+		Se annulli un'azione per sbaglio, seleziona Ripeti dal menu Modifica per ripetere l'azione annullata.
+		<div><img src="controls_15.png" /></div>
+        <h3>Testare il Preset</h3>
+        Prima di condividere un Preset, va testato. Lo puoi fare direttamente dall'editor: premi Play sul piccolo player in basso a sinistra.
+        <div><img src="controls_13.png" /></div>
+        I controlli sono molto semplici: premi Play per iniziare la riproduzione, Pausa per fermarla, Trascina sulle barre per cambiare posizione e volume, Riavvolgi per tornare all'inizio. Quando hai finito, lascialo in pausa.<br/>
+		Puoi anche modificare il Preset mentre ascolti l'anteprima.<br/>
+        Se il tuo Preset ha un loop, assicurati che non si sentano differenze tra la fine e l'inizio della sezione che si ripete.
+        <h3>Ora sai come controllare l'editor</h3>
+        Guarda la <a href="presetDesign_it_IT.html">prossima sezione</a> per imparare a creare i Preset.
+        <h3>Importare Preset da HBX Binaural Player</h3>
+        HBX Binaural Player è un'altra nostra applicazione di Brainwave Entrainment che ha un bel po' di Preset.<br/>
+        Questo editor include un semplice convertitore di Preset: apri il menu File, clicca Importa Preset HBX e seleziona il Preset da importare.<br/>
+        Se tutto va a buon fine, sarà visualizzato nell'editor.<br/>
+        Anche se di solito funziona bene, ci sono alcune limitazioni:<ul>
+            <li>I Fattori di Interpolazione non sono supportati: saranno tutti trattati come lineari (1)</li>
+            <li>Le Frequenze Binaurali devono essere tra 0 e 40 Hz</li>
+            <li>Tutti i volumi devono essere tra 0 e 1</li>
+            <li>Ci potrebbero essere dei punti extra in alcuni Envelope (sono innocui, ma aumentano la complessità del Preset)</li>
+        </ul>
+        I valori temporali negativi sono supportati.<br/>
+        Spesso è utile aumentare la Frequenza Base.
+    </body>
+</html>

@@ -1,0 +1,15 @@
+body{
+	font-family:sans-serif;
+	background-color:#FFFFFF;
+	color:#000000;
+}
+span.bold{
+    font-weight:900;
+}
+a,a:visited{
+	color:#4040FF;
+	text-decoration:underline;
+}
+img{
+margin:1em 0 1em 0;
+}

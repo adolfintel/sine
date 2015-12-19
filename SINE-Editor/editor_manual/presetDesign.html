@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" type="text/css" href="style.css" />
+    </head>
+    <body>
+        <h2>Preset creation basics</h2>
+        <h3>Preliminary searches</h3>
+        The first thing you have to do is search for the appropriate frequencies.<br/>
+		You can find some frequencies <a href="frequencies.html">here</a>, and more by googling around.<br/>
+        For instance, we want to make a simple sleeping aid, so our Preset has to start at 10Hz (awake and conscious) and slowly decrease to 0.5Hz (very deep sleep).<br/>
+		Remember not to change frequencies too quickly or too often: it takes 10-30 seconds for the brain to adapt to a new frequency.
+        <h3>New Preset</h3>
+        Open the File menu and click New, then enter the Preset details. You can change them later.
+        <div><img src="presetDesign_1.png"/></div>
+        5 minutes is way too short, we must increase the length. 1 hour should be fine.
+        <div><img src="presetDesign_2.png"/></div>
+        <h3>Noise</h3>
+        As we've already said, Background noise is very important: having too much or not enough noise can compromise the effects.<br/>
+        As a general rule, start with a good amount of noise, then decrease every time you want to give "emphasis" to a certain frequency.<br/>
+        In our case, I'd say: start with quite a lot of noise, then go down to very little noise.
+        <div><img src="presetDesign_3.png"/></div>
+        As you can see, I made a short fade-in (10 seconds) and a longer fade-out (1 minute).
+        Remember to zoom in and out for more precision.
+        <h3>Entrainment Track</h3>
+        Finally, it's time for the actual pulses.<br/>
+        As we said, we'll start at 10Hz and go down to 0.5Hz with a few steps.<br/>
+        <div><img src="presetDesign_4.png"/></div>
+        And now the volume. Remember to do the same fade-in and fade-out as the noise track.<br/>
+        As a general rule, the volume envelope is always at 100%, but for this Preset, we'll reduce the volume at the end of the Preset so it's less annoying to listen to while sleeping.<br/>
+        <div><img src="presetDesign_5.png"/></div>
+        And last but not least, the Base frequency. Usually this is constant.<br/>
+        I suggest a frequency between 220 and 440 Hz.
+        <div><img src="presetDesign_6.png"/></div>
+        If you want, you can also set the main volume of the track:
+        <div><img src="presetDesign_7.png"/></div>
+        <h3>Chords and advanced functions</h3>
+        If you want, you can have several Entrainment Tracks in your Preset, each one of them doing (potentially) different stuff.<br/>
+        For instance, we will now clone our Entrainment Track, change its base frequency to 880Hz and reduce its volume down to 70% to make a simple chord.
+        <div><img src="presetDesign_8.png"/></div>
+        <h3>Testing</h3>
+        Before you can publish your work, you must test it to make sure everything's working as expected.<br/>
+        Use the small player at the bottom to do this. You can also make changes while previewing.
+        <div><img src="presetDesign_9.png"/></div>
+        <h3>Optimization</h3>
+        Because of the way LibBWEntrainment (the core library of SINE) works, the performance depend mostly on the density of points near the current time.<br/>
+        For instance, if there are 4 points within 10 seconds, the complexity will be higher. If the same points are, say, within 10 minutes, the complexity will be much lower.<br/>
+        To improve the performance of your Preset you should remove these points in excess, and make sure you never have several points overlapping (they can be spotted by the more vibrant green).<br/>
+        The Optimize function under the Preset menu will take care of most of these problems.<br/>
+        Also, if you're using multiple tracks, make sure you really need them.
+        <h3>Save and share</h3>
+        Save the Preset, and don't forget to <a href="sharing.html">share your work</a> with other users of SINE.
+    </body>
+</html>

@@ -1,0 +1,1 @@
+The classes in this package have NOTHING to do with this application, and are only needed to convert presets from HBX Binaural Player.

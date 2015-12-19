@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch4jConfig>
+  <dontWrapJar>true</dontWrapJar>
+  <headerType>gui</headerType>
+  <jar>SINE.jar</jar>
+  <outfile>SINE.exe</outfile>
+  <errTitle>Java application</errTitle>
+  <cmdLine></cmdLine>
+  <chdir>.</chdir>
+  <priority>normal</priority>
+  <downloadUrl>http://java.com/download</downloadUrl>
+  <supportUrl></supportUrl>
+  <stayAlive>false</stayAlive>
+  <restartOnCrash>false</restartOnCrash>
+  <manifest></manifest>
+  <icon>..\player.ico</icon>
+  <jre>
+    <path>jre</path>
+    <bundledJre64Bit>false</bundledJre64Bit>
+    <bundledJreAsFallback>true</bundledJreAsFallback>
+    <minVersion>1.7.0</minVersion>
+    <maxVersion></maxVersion>
+    <jdkPreference>preferJre</jdkPreference>
+    <runtimeBits>64/32</runtimeBits>
+    <opt>-XX:+TieredCompilation -Dsun.java2d.dpiaware=true -Dsun.java2d.noddraw=true</opt>
+  </jre>
+  <versionInfo>
+    <fileVersion>1.0.0.0</fileVersion>
+    <txtFileVersion>1.8.3</txtFileVersion>
+    <fileDescription>SINE Isochronic Entrainer</fileDescription>
+    <copyright>2014-2015 Federico Dossena</copyright>
+    <productVersion>1.8.3.0</productVersion>
+    <txtProductVersion>1.8.3</txtProductVersion>
+    <productName>SINE Isochronic Entrainer</productName>
+    <companyName>Federico Dossena</companyName>
+    <internalName>SINE</internalName>
+    <originalFilename>SINE.exe</originalFilename>
+  </versionInfo>
+  <messages>
+    <startupErr>An error occurred while starting the application.</startupErr>
+    <bundledJreErr>This application was configured to use a bundled Java Runtime Environment but the runtime is missing or corrupted.</bundledJreErr>
+    <jreVersionErr>This application requires Java 7 or newer.</jreVersionErr>
+    <launcherErr>This application requires Java 7 or newer.</launcherErr>
+    <instanceAlreadyExistsMsg>An application instance is already running.</instanceAlreadyExistsMsg>
+  </messages>
+</launch4jConfig>
