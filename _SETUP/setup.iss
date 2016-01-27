@@ -1,7 +1,7 @@
 [Setup]
 AppId={{1E6C2953-D449-4B16-A7EA-FA50E0512B8F}
 AppName="SINE Isochronic Entrainer"
-AppVersion="1.8.3"
+AppVersion="1.8.4"
 AppPublisher="Federico Dossena"
 AppPublisherURL="http://sine.adolfintel.com"
 AppSupportURL="http://sine.adolfintel.com"

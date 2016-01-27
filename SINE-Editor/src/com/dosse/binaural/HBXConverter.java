@@ -19,7 +19,6 @@ package com.dosse.binaural;
 import com.dosse.bwentrain.core.EntrainmentTrack;
 import com.dosse.bwentrain.core.Envelope;
 import com.dosse.bwentrain.core.Preset;
-import com.dosse.bwentrain.utils.XMLUtils;
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -28,10 +27,17 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.StringReader;
 import java.util.zip.GZIPInputStream;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
 
 /**
  *
@@ -152,7 +158,7 @@ public class HBXConverter {
         EntrainmentTrack tone = p.getEntrainmentTrack(0);
         Envelope noise = p.getNoiseEnvelope(), volume = tone.getVolumeEnvelope(), ent = tone.getEntrainmentFrequencyEnvelope();
         //the easiest way to convert the HBX preset is to start from the output of the toXML method of the HBX preset
-        Element hXML = XMLUtils.getXMLDocumentFromString(hbx.toXML());
+        Element hXML = getXMLDocumentFromString(hbx.toXML());
         tone.getBaseFrequencyEnvelope().setVal(0, Float.parseFloat(hXML.getAttribute("baseFrequency")));
         NodeList points = hXML.getChildNodes();
         for (int i = 0, pi = 0; i < points.getLength(); i++) {
@@ -177,4 +183,10 @@ public class HBXConverter {
         return p;
     }
 
+    public static Element getXMLDocumentFromString(String xml) throws SAXException, IOException, ParserConfigurationException {
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder = factory.newDocumentBuilder();
+        Document xmlDoc = builder.parse(new InputSource(new StringReader(xml)));
+        return xmlDoc.getDocumentElement();
+    }
 }

@@ -3,19 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Federico/Documents/NetBeansProjects/SINE-Editor/src/com/dosse/bwentrain/editor/locale.properties</file>
-            <file>file:/C:/Users/Federico/Documents/NetBeansProjects/SINE-Editor/src/com/dosse/bwentrain/editor/Main.java</file>
-            <file>file:/C:/Users/Federico/Documents/NetBeansProjects/SINE-Editor/src/com/dosse/bwentrain/editor/LengthEditDialog.java</file>
-            <file>file:/C:/Users/Federico/Documents/NetBeansProjects/SINE-Editor/src/com/dosse/bwentrain/editor/EntrainmentTrackEditPanel.java</file>
-            <file>file:/C:/Users/Federico/Documents/NetBeansProjects/SINE-Editor/src/com/dosse/bwentrain/editor/ExportDialog.java</file>
-            <file>file:/C:/Users/Federico/Documents/NetBeansProjects/SINE-Editor/src/com/dosse/bwentrain/editor/PointEditDialog.java</file>
-            <file>file:/C:/Users/Federico/Documents/NetBeansProjects/SINE-Editor/src/com/dosse/bwentrain/editor/NoiseEditPanel.java</file>
-            <file>file:/C:/Users/Federico/Documents/NetBeansProjects/SINE-Editor/src/com/dosse/bwentrain/editor/DetailsEditPanel.java</file>
-            <file>file:/C:/Users/Federico/Documents/NetBeansProjects/SINE-Editor/src/com/dosse/bwentrain/editor/locale_it_IT.properties</file>
-            <file>file:/C:/Users/Federico/Documents/NetBeansProjects/SINE-Editor/src/com/dosse/bwentrain/editor/PlayerPanel.java</file>
-            <file>file:/C:/Users/Federico/Documents/NetBeansProjects/SINE-Editor/src/com/dosse/bwentrain/editor/AboutDialog.java</file>
-            <file>file:/C:/Users/Federico/Documents/NetBeansProjects/SINE-Editor/src/com/dosse/bwentrain/editor/Utils.java</file>
-            <file>file:/C:/Users/Federico/Documents/NetBeansProjects/SINE-Editor/src/com/dosse/bwentrain/editor/Graph.java</file>
+            <file>file:/C:/_PROJECTS/SINE%20Isochronic%20Entrainer/PC/SINE-Editor/src/com/dosse/bwentrain/editor/locale_it_IT.properties</file>
+            <file>file:/C:/_PROJECTS/SINE%20Isochronic%20Entrainer/PC/SINE-Editor/src/com/dosse/bwentrain/editor/Main.java</file>
+            <file>file:/C:/_PROJECTS/SINE%20Isochronic%20Entrainer/PC/SINE-Editor/src/com/dosse/binaural/HBXConverter.java</file>
+            <file>file:/C:/_PROJECTS/SINE%20Isochronic%20Entrainer/PC/SINE-Editor/src/com/dosse/bwentrain/editor/locale.properties</file>
         </group>
     </open-files>
 </project-private>

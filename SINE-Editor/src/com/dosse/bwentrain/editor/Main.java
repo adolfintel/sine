@@ -883,7 +883,7 @@ public class Main extends javax.swing.JFrame {
     private void savePreset(File x) {
         try {
             BufferedWriter out = new BufferedWriter(new FileWriter(x));
-            out.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>" + preset.toString() + "\n"); //write xml header and preset as xml
+            out.write(preset.toString() + "\n"); //write preset as xml
             out.flush();
             out.close();
             modified = false;
@@ -986,6 +986,7 @@ public class Main extends javax.swing.JFrame {
         }
         try {
             loadPreset(HBXConverter.convert(x));
+            playerPanel.stop();
             modified = true;
             clearUndoStack();
             saveToUndoStack();

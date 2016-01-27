@@ -139,7 +139,7 @@ public class Main {
     }
     
     private static void showHelp() {
-        System.out.println("SINE Isochronic Entrainer - Command Line Interface\nVersion 1.8.3\n\n"
+        System.out.println("SINE Isochronic Entrainer - Command Line Interface\nVersion 1.8.4\n\n"
                 + "Syntax:\n"
                 + "SINE-CLI presetFile [--validate|--export fileName [loopCount]]\n\n"
                 + "Description:\n"
