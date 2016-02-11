@@ -14,8 +14,11 @@ This PC Version include an Editor to make your own sessions.
 
 ## Download
 [Installer for Windows](http://downloads.adolfintel.com/geth.php?r=sine-win)
+
 [.deb package for Ubuntu, Debian, etc.](http://downloads.adolfintel.com/geth.php?r=sine-deb)
+
 [Arch Linux package (from AUR)](https://aur.archlinux.org/packages/sine/)
+
 [Multiplatform](http://downloads.adolfintel.com/geth.php?r=sine-pcbin) (Requires [Java](http://java.com))
 
 ## Compatibility
