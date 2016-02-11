@@ -14,7 +14,8 @@ This PC Version include an Editor to make your own sessions.
 
 ## Download
 [Installer for Windows](http://downloads.adolfintel.com/geth.php?r=sine-win)
-
+[.deb package for Ubuntu, Debian, etc.](http://downloads.adolfintel.com/geth.php?r=sine-deb)
+[Arch Linux package (from AUR)](https://aur.archlinux.org/packages/sine/)
 [Multiplatform](http://downloads.adolfintel.com/geth.php?r=sine-pcbin) (Requires [Java](http://java.com))
 
 ## Compatibility
@@ -24,7 +25,8 @@ This PC Version include an Editor to make your own sessions.
 ## Usage
 Import the projects into Netbeans.
 
-__SETUP contains the files used to build the installer for Windows (requires [Inno Setup](http://www.jrsoftware.org/isinfo.php) and [launch4j](http://launch4j.sourceforge.net/))
+_SETUP contains all the files used to build the GNU/Linux packages and the installer for Windows.
+To build the installer for Windows, you'll need [Inno Setup](http://www.jrsoftware.org/isinfo.php) and [launch4j](http://launch4j.sourceforge.net/)
 
 ## Screenshots
 ![Screenshot](http://adolfintel.com/sine/pc1.png)
@@ -32,7 +34,7 @@ __SETUP contains the files used to build the installer for Windows (requires [In
 ![Screenshot](http://adolfintel.com/sine/website1.png)
 
 ## License
-Copyright (C) 2015 Federico Dossena
+Copyright (C) 2016 Federico Dossena
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
