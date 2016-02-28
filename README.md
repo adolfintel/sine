@@ -15,6 +15,8 @@ This PC Version include an Editor to make your own sessions.
 ## Download
 [Installer for Windows](http://downloads.adolfintel.com/geth.php?r=sine-win)
 
+[Mac App](http://downloads.adolfintel.com/geth.php?r=sine-mac)
+
 [.deb package for Ubuntu, Debian, etc.](http://downloads.adolfintel.com/geth.php?r=sine-deb)
 
 [Arch Linux package (from AUR)](https://aur.archlinux.org/packages/sine/)
@@ -22,13 +24,14 @@ This PC Version include an Editor to make your own sessions.
 [Multiplatform](http://downloads.adolfintel.com/geth.php?r=sine-pcbin) (Requires [Java](http://java.com))
 
 ## Compatibility
-* Windows XP and newer
-* Multiplatform, Java SE 7 or newer
+* Windows XP or newer
+* Mac OS X 10.9 or newer
+* Any platform supported by Java SE 7 or newer
  
 ## Usage
 Import the projects into Netbeans.
 
-_SETUP contains all the files used to build the GNU/Linux packages and the installer for Windows.
+_SETUP contains all the files used to build the GNU/Linux packages, the installer for Windows and the Mac app packages.
 To build the installer for Windows, you'll need [Inno Setup](http://www.jrsoftware.org/isinfo.php) and [launch4j](http://launch4j.sourceforge.net/)
 
 ## Screenshots
