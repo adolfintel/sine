@@ -18,6 +18,7 @@ package com.dosse.bwentrain.player;
 
 import com.dosse.bwentrain.core.Preset;
 import com.dosse.bwentrain.sound.backends.pc.PCSoundBackend;
+import com.github.axet.apple.Apple;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -41,7 +42,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowFocusListener;
 import java.io.File;
 import java.net.URI;
 import java.util.List;
@@ -69,6 +69,7 @@ import org.xml.sax.InputSource;
 public class Main extends JFrame {
 
     private static final boolean DRAG_N_DROP_ENABLED = System.getProperty("os.name").toLowerCase().contains("win"); //drag n drop is only supported on windows, sorry
+    private static final boolean RECEIVE_APPLE_EVENTS = System.getProperty("os.name").toLowerCase().startsWith("mac"); //mac uses "events" for file opens instead of standard command line args because it's a special snowflake
 
     public static final float SCALE = calculateScale(); //used for DPI scaling. multiply each size by this factor.
 
@@ -119,7 +120,7 @@ public class Main extends JFrame {
     public static final Font BASE_FONT = Utils.loadFont("/com/dosse/bwentrain/player/fonts/OpenSans-reg.ttf").deriveFont(BASE_FONT_PX), //load base font
             LARGE_FONT = BASE_FONT.deriveFont(LARGE_FONT_PX); //and derive the large one
 
-    public static File lastDir = new File("."); //last folder visited with a file chooser
+    public static File lastDir = null; //last folder visited with a file chooser
 
     //file filter for preset files, used when loading a preset
     public static final FileFilter PRESET_FILE_FILTER = new FileFilter() {
@@ -475,6 +476,23 @@ public class Main extends JFrame {
                 return false;
             }
         });
+        if (RECEIVE_APPLE_EVENTS) { //listener for mac file associations
+            try {
+                Apple.setFileType("sin", "com.dosse.bwentrain.player"); //why of course, the plist file is not enough! did you think this was a working os or something?
+                new Apple().setOpenFileHandler(new Apple.OpenFilesHandler() {
+                    @Override
+                    public void openFiles(List<File> list) {
+                        try {
+                            loadPreset(list.get(0));
+                            Apple.setFileType("sin", "com.dosse.bwentrain.player"); //let's do it again, just to be sure. seems to break the association by itself at times.
+                        } catch (Throwable t) {
+                        }
+                    }
+                });
+            } catch (Throwable t) {
+                //sometimes this happens. dunno why
+            }
+        }
         //show the window centered horizontally
         int x = (int) (Toolkit.getDefaultToolkit().getScreenSize().width / 2 - getWidth() / 2);
         setLocation(x, 50);
@@ -685,8 +703,10 @@ public class Main extends JFrame {
         //create and show form
         Main gui = new Main();
         gui.setVisible(true);
-        if (args.length == 1) { //if a file was given via command line parameter, load it
-            gui.loadPreset(new File(args[0]));
+        if (!RECEIVE_APPLE_EVENTS) {
+            if (args.length == 1) { //if a file was given via command line parameter, load it
+                gui.loadPreset(new File(args[0]));
+            }
         }
 
     }

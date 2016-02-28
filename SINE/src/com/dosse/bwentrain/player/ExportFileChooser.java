@@ -84,7 +84,7 @@ public class ExportFileChooser extends JDialog {
         c.addChoosableFileFilter(Main.MP3_FILE_FILTER);
         c.addChoosableFileFilter(Main.FLAC_FILE_FILTER);
         c.addChoosableFileFilter(Main.WAV_FILE_FILTER);
-        c.setCurrentDirectory(Main.lastDir); //show last directory browsed with a file chooser
+        if(Main.lastDir!=null) c.setCurrentDirectory(Main.lastDir); //show last directory browsed with a file chooser
         c.addActionListener(new ActionListener() { //user double-clicks a file or presses enter
             @Override
             public void actionPerformed(ActionEvent e) {

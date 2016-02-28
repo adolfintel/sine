@@ -1,0 +1,8 @@
+SINE Isochronic Entrainer v1.8.5
+
+Licenza: GNU GPLv3
+
+Utilizzo: per eseguire il player, fai doppio click su SINE.jar; per eseguire l'editor, fai doppio click su SINE-Editor.jar. Se l'applicazione non si avvia, assicurati di avere installato Java 7 (scaricabile gratuitamente da http://www.java.com/). 
+Se stai usando Microsoft Windows, ti consiglio di scaricare l'installer automatico anzichè questo archivio per installazione manuale.
+
+Non dimenticarti di scaricare qualche preset!

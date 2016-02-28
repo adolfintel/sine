@@ -1,0 +1,6 @@
+setupFiles/editor_manual/*
+setupFiles/jre/*
+setupFiles/lib/*
+setupFiles/*.jar
+setupFiles/*.exe
+setup.exe

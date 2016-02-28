@@ -74,7 +74,7 @@ public class PresetFileChooser extends JDialog {
         c.setMultiSelectionEnabled(false);
         c.setControlButtonsAreShown(false);
         c.setFileFilter(Main.PRESET_FILE_FILTER);
-        c.setCurrentDirectory(Main.lastDir); //show last directory browsed with a file chooser
+        if(Main.lastDir!=null) c.setCurrentDirectory(Main.lastDir); //show last directory browsed with a file chooser
         c.addActionListener(new ActionListener() { //double-clicked a file or pressed enter
             @Override
             public void actionPerformed(ActionEvent e) {
