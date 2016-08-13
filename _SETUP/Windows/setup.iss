@@ -1,11 +1,11 @@
 [Setup]
 AppId={{1E6C2953-D449-4B16-A7EA-FA50E0512B8F}
 AppName="SINE Isochronic Entrainer"
-AppVersion="1.8.5"
+AppVersion="1.8.6"
 AppPublisher="Federico Dossena"
-AppPublisherURL="http://sine.adolfintel.com"
-AppSupportURL="http://sine.adolfintel.com"
-AppUpdatesURL="http://sine.adolfintel.com"
+AppPublisherURL="http://isochronic.io"
+AppSupportURL="http://isochronic.io"
+AppUpdatesURL="http://isochronic.io"
 DefaultDirName={pf}\SINE
 DefaultGroupName="SINE Isochronic Entrainer"
 DisableProgramGroupPage=yes
@@ -18,7 +18,7 @@ LZMAMatchFinder=BT
 SolidCompression=yes
 LZMANumBlockThreads=1
 LZMANumFastBytes=273
-LZMADictionarySize=262144
+LZMADictionarySize=1048576
 LZMAUseSeparateProcess=yes
 InternalCompressLevel=ultra64
 SetupIconFile="player.ico"

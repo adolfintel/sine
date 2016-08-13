@@ -17,7 +17,7 @@
   <jre>
     <path>jre</path>
     <bundledJre64Bit>false</bundledJre64Bit>
-    <bundledJreAsFallback>true</bundledJreAsFallback>
+    <bundledJreAsFallback>false</bundledJreAsFallback>
     <minVersion>1.7.0</minVersion>
     <maxVersion></maxVersion>
     <jdkPreference>preferJre</jdkPreference>
@@ -26,21 +26,16 @@
   </jre>
   <versionInfo>
     <fileVersion>1.0.0.0</fileVersion>
-    <txtFileVersion>1.8.5</txtFileVersion>
+    <txtFileVersion>1.8.6</txtFileVersion>
     <fileDescription>SINE Isochronic Entrainer - Command Line Interface</fileDescription>
     <copyright>2014-2016 Federico Dossena</copyright>
-    <productVersion>1.8.5.0</productVersion>
-    <txtProductVersion>1.8.5</txtProductVersion>
+    <productVersion>1.8.6.0</productVersion>
+    <txtProductVersion>1.8.6</txtProductVersion>
     <productName>SINE Isochronic Entrainer - Command Line Interface</productName>
     <companyName>Federico Dossena</companyName>
     <internalName>SINE-CLI</internalName>
     <originalFilename>SINE-CLI.exe</originalFilename>
+    <trademarks></trademarks>
+    <language>ENGLISH_US</language>
   </versionInfo>
-  <messages>
-    <startupErr>An error occurred while starting the application.</startupErr>
-    <bundledJreErr>This application was configured to use a bundled Java Runtime Environment but the runtime is missing or corrupted.</bundledJreErr>
-    <jreVersionErr>This application requires Java 7 or newer.</jreVersionErr>
-    <launcherErr>This application requires Java 7 or newer.</launcherErr>
-    <instanceAlreadyExistsMsg>An application instance is already running.</instanceAlreadyExistsMsg>
-  </messages>
 </launch4jConfig>

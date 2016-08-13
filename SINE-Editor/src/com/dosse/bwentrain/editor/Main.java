@@ -33,6 +33,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import javax.swing.DefaultListModel;
 import javax.swing.GroupLayout;
 import javax.swing.JFileChooser;
@@ -1152,6 +1153,7 @@ public class Main extends javax.swing.JFrame {
             //</editor-fold>
         } catch (Throwable ex) {
         }
+        Locale.setDefault(Locale.Category.FORMAT, Locale.ENGLISH); //allows using the dot instead of the comma when inputting numbers
         Main e = new Main();
         e.setVisible(true);
         if (args.length == 1) { //if a file was specified via command line parameter, load it
