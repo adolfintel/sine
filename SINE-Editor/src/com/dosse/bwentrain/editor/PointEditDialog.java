@@ -41,8 +41,8 @@ public class PointEditDialog extends javax.swing.JDialog {
         super(new JFrame(), true);
         initComponents();
         Point ml = MouseInfo.getPointerInfo().getLocation();
-        setLocation(ml.x, ml.y);
         setSize((int) (DEFAULT_WIDTH * Main.SCALE + getInsets().left + getInsets().right), getHeight());
+        setLocation(ml.x-getWidth()/2, ml.y);
         this.t = t;
         this.v = v;
         int time = (int) t;
