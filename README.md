@@ -10,18 +10,18 @@ Isochronic tones are a commonly used aural stimuli for Brainwave Entrainment, co
 This PC Version include an Editor to make your own sessions.
  
 ## Website
-[SINE Isochronic Entrainer](http://sine.adolfintel.com/)
+[SINE Isochronic Entrainer](http://isochronic.io/)
 
 ## Download
-[Installer for Windows](http://downloads.adolfintel.com/geth.php?r=sine-win)
+[Installer for Windows](http://downloads.fdossena.com/geth.php?r=sine-win)
 
-[Mac App](http://downloads.adolfintel.com/geth.php?r=sine-mac)
+[Mac App](http://downloads.fdossena.com/geth.php?r=sine-mac)
 
-[.deb package for Ubuntu, Debian, etc.](http://downloads.adolfintel.com/geth.php?r=sine-deb)
+[.deb package for Ubuntu, Debian, etc.](http://downloads.fdossena.com/geth.php?r=sine-deb)
 
 [Arch Linux package (from AUR)](https://aur.archlinux.org/packages/sine/)
 
-[Multiplatform](http://downloads.adolfintel.com/geth.php?r=sine-pcbin) (Requires [Java](http://java.com))
+[Multiplatform](http://downloads.fdossena.com/geth.php?r=sine-pcbin) (Requires [Java](http://java.com))
 
 ## Compatibility
 * Windows XP or newer
@@ -35,9 +35,9 @@ _SETUP contains all the files used to build the GNU/Linux packages, the installe
 To build the installer for Windows, you'll need [Inno Setup](http://www.jrsoftware.org/isinfo.php) and [launch4j](http://launch4j.sourceforge.net/)
 
 ## Screenshots
-![Screenshot](http://adolfintel.com/sine/pc1.png)
-![Screenshot](http://adolfintel.com/sine/pc2.png)
-![Screenshot](http://adolfintel.com/sine/website1.png)
+![Screenshot](http://fdossena.com/sine/pc1.png)
+![Screenshot](http://fdossena.com/sine/pc2.png)
+![Screenshot](http://fdossena.com/sine/website1.png)
 
 ## License
 Copyright (C) 2016 Federico Dossena
