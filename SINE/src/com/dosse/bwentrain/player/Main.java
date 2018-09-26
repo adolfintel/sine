@@ -72,10 +72,15 @@ public class Main extends JFrame {
     private static final boolean RECEIVE_APPLE_EVENTS = System.getProperty("os.name").toLowerCase().startsWith("mac"); //mac uses "events" for file opens instead of standard command line args because it's a special snowflake
 
     public static final float SCALE = calculateScale(); //used for DPI scaling. multiply each size by this factor.
-
+    
+    
     //calculates SCALE based on screen DPI. target DPI is 80, so if DPI=80, SCALE=1. Min DPI is 64
+    //for mac version, dpi / 80 returns a big window. Using 1 as multiplier you'll get a decent-sized window.
     private static final float calculateScale() {
         float dpi = (float) Toolkit.getDefaultToolkit().getScreenResolution();
+        
+        if (RECEIVE_APPLE_EVENTS)
+            return 1f;
         return (dpi < 64 ? 64 : dpi) / 80f;
     }
 

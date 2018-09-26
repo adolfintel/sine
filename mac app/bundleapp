@@ -1,0 +1,12 @@
+#!/bin/bash
+#using https://github.com/Jorl17/jar2app
+
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+cd "${DIR}"
+
+rm -r SINE.app
+
+jar2app ../SINE/dist/SINE.jar -i icon.icns
+
+mkdir SINE.app/Contents/Java/lib
+cp ../SINE/dist/lib/* SINE.app/Contents/Java/lib/
