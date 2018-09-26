@@ -6,7 +6,7 @@ cd "${DIR}"
 
 rm -r SINE.app
 
-jar2app ../SINE/dist/SINE.jar -i icon.icns
+jar2app ../SINE/dist/SINE.jar -i icon.icns -r /Library/Java/JavaVirtualMachines/jdk1.7.0_80.jdk -b com.dosse.bwentrain.player
 
 mkdir SINE.app/Contents/Java/lib
 cp ../SINE/dist/lib/* SINE.app/Contents/Java/lib/
