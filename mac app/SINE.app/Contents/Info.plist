@@ -44,8 +44,7 @@
     <key>NSHumanReadableCopyright</key>
     <string></string>
 
-    <key>JVMRuntime</key>
-<string>jdk1.7.0_80.jdk</string>
+    
 
     <key>JVMMainClassName</key>
     <string>com.dosse.bwentrain.player.Main</string>
