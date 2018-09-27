@@ -4,11 +4,13 @@
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd "${DIR}"
 
-rm -r SINE.app
+rm -fr SINE.app
 
-#jar2app ../SINE/dist/SINE.jar -i icon.icns -r /Library/Java/JavaVirtualMachines/jdk1.7.0_80.jdk -b com.dosse.bwentrain.player
-
-jar2app ../SINE/dist/SINE.jar -i icon.icns -b com.dosse.bwentrain.player
+if [ $1 == "-r" ]; then
+	jar2app ../SINE/dist/SINE.jar -i icon.icns -r /Library/Java/JavaVirtualMachines/jdk1.7.0_80.jdk -b com.dosse.bwentrain.player
+else
+	jar2app ../SINE/dist/SINE.jar -i icon.icns -b com.dosse.bwentrain.player
+fi
 
 mkdir SINE.app/Contents/Java/lib
 cp ../SINE/dist/lib/* SINE.app/Contents/Java/lib/
