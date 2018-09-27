@@ -89,7 +89,7 @@
         <key>UTTypeDescription</key>
         <string>SINE File</string>
         <key>UTTypeIdentifier</key>
-        <string>om.dosse.bwentrain.myextension</string>
+        <string>com.dosse.bwentrain.myextension</string>
         <key>UTTypeTagSpecification</key>
         <dict>
             <key>public.filename-extension</key>

@@ -1,18 +1,64 @@
 #!/bin/bash
 #using https://github.com/Jorl17/jar2app
+APPNAME="SINE"
+BUNDLENAME="com.dosse.bwentrain.player"
+EXTDESC="SINE Preset"
+EXT="sin"
+ICONNAME="icon.icns"
 
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd "${DIR}"
 
-rm -fr SINE.app
+rm -fr $APPNAME.app
 
 if [ $1 == "-r" ]; then
-	jar2app ../SINE/dist/SINE.jar -i icon.icns -r /Library/Java/JavaVirtualMachines/jdk1.7.0_80.jdk -b com.dosse.bwentrain.player
+	jar2app ../SINE/dist/SINE.jar -i $ICONNAME -r /Library/Java/JavaVirtualMachines/jdk1.7.0_80.jdk -b $BUNDLENAME -o $APPNAME.app
 else
-	jar2app ../SINE/dist/SINE.jar -i icon.icns -b com.dosse.bwentrain.player
+	jar2app ../SINE/dist/SINE.jar -i $ICONNAME -b $BUNDLENAME -o $APPNAME.app
 fi
 
-mkdir SINE.app/Contents/Java/lib
-cp ../SINE/dist/lib/* SINE.app/Contents/Java/lib/
+mkdir $APPNAME.app/Contents/Java/lib
+cp ../SINE/dist/lib/* $APPNAME.app/Contents/Java/lib/
 
-cp "example Info.plist" SINE.app/Contents/Info.plist
+#cp "example Info.plist" $APPNAME.app/Contents/Info.plist
+
+#add linking to .sin extension
+plutil -insert CFBundleDocumentTypes -xml '<array>
+	<dict>
+        <key>CFBundleTypeName</key>
+        <string>$EXTDESC</string>
+        <key>CFBundleTypeRole</key>
+        <string>Viewer</string>
+        <key>LSHandlerRank</key>
+        <string>Owner</string>
+        <key>LSItemContentTypes</key>
+        <array>
+            <string>$BUNDLENAME.myextension</string>
+        </array>
+    </dict>
+</array>' $APPNAME.app/Contents/Info.plist
+
+
+
+plutil -insert UTExportedTypeDeclarations -xml '<array>
+<dict>
+        <key>UTTypeConformsTo</key>
+        <array>
+            <string>public.data</string>
+        </array>
+        <key>UTTypeDescription</key>
+        <string>$EXTDESC</string>
+        <key>UTTypeIdentifier</key>
+        <string>$BUNDLENAME.myextension</string>
+        <key>UTTypeTagSpecification</key>
+        <dict>
+            <key>public.filename-extension</key>
+            <string>$EXT</string>
+            <key>public.mime-type</key>
+            <string>application/octet-stream</string>
+        </dict>
+    </dict>
+</array>' $APPNAME.app/Contents/Info.plist
+
+
+

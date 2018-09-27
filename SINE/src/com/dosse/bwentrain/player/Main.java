@@ -634,10 +634,6 @@ public class Main extends JFrame {
             //Thread.sleep(200);
             tmp.dispose();
         }
-        
-        else {
-            JOptionPane.showMessageDialog(null, "UUU");
-        }
     }
 
     public static void main(String args[]) throws InterruptedException {
@@ -729,7 +725,6 @@ public class Main extends JFrame {
         Main gui = new Main();
         gui.setVisible(true);
         alreadyOpened = true;
-        
         
         if (!RECEIVE_APPLE_EVENTS) {
             if (args.length == 1) { //if a file was given via command line parameter, load it
