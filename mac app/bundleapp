@@ -14,3 +14,5 @@ fi
 
 mkdir SINE.app/Contents/Java/lib
 cp ../SINE/dist/lib/* SINE.app/Contents/Java/lib/
+
+cp "example Info.plist" SINE.app/Contents/Info.plist

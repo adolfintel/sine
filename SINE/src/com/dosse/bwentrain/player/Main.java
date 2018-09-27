@@ -67,9 +67,11 @@ import org.xml.sax.InputSource;
  * @author dosse
  */
 public class Main extends JFrame {
-
+    private static boolean alreadyOpened = false;
+    
     private static final boolean DRAG_N_DROP_ENABLED = System.getProperty("os.name").toLowerCase().contains("win"); //drag n drop is only supported on windows, sorry
-    private static final boolean RECEIVE_APPLE_EVENTS = System.getProperty("os.name").toLowerCase().startsWith("mac"); //mac uses "events" for file opens instead of standard command line args because it's a special snowflake
+    private static final boolean RECEIVE_APPLE_EVENTS = System.getProperty("os.name").toLowerCase().startsWith("mac")
+            || System.getProperty("os.name").toLowerCase().contains("os x"); //mac uses "events" for file opens instead of standard command line args because it's a special snowflake
 
     public static final float SCALE = calculateScale(); //used for DPI scaling. multiply each size by this factor.
     
@@ -193,7 +195,7 @@ public class Main extends JFrame {
     private final MainMenu mainMenu; //the menu opened when clicking the menu button
     private final MainMenu.MenuItem export; //pointer to the export option in the menu, so it can be enabled/disabled when necessary
 
-    public Main() {
+    public Main() throws InterruptedException {
         super();
         //initialize form
         setIconImage(Utils.loadUnscaled("/com/dosse/bwentrain/player/images/logoIcon.png").getImage());
@@ -481,23 +483,11 @@ public class Main extends JFrame {
                 return false;
             }
         });
+        
         if (RECEIVE_APPLE_EVENTS) { //listener for mac file associations
-            try {
-                Apple.setFileType("sin", "com.dosse.bwentrain.player"); //why of course, the plist file is not enough! did you think this was a working os or something?
-                new Apple().setOpenFileHandler(new Apple.OpenFilesHandler() {
-                    @Override
-                    public void openFiles(List<File> list) {
-                        try {
-                            loadPreset(list.get(0));
-                            Apple.setFileType("sin", "com.dosse.bwentrain.player"); //let's do it again, just to be sure. seems to break the association by itself at times.
-                        } catch (Throwable t) {
-                        }
-                    }
-                });
-            } catch (Throwable t) {
-                //sometimes this happens. dunno why
-            }
+            openFileMac();
         }
+        
         //show the window centered horizontally
         int x = (int) (Toolkit.getDefaultToolkit().getScreenSize().width / 2 - getWidth() / 2);
         setLocation(x, 50);
@@ -619,8 +609,38 @@ public class Main extends JFrame {
     private void quit() {
         System.exit(0);
     }
+    
+    private void openFileMac() throws InterruptedException {
+        //if SINE is closed
+        if (! alreadyOpened) {
+            try {
+                new Apple().setOpenFileHandler(new Apple.OpenFilesHandler() {
+                    @Override
+                    public void openFiles(List<File> list) {
+                        //JOptionPane.showMessageDialog(null, "Aperto");
 
-    public static void main(String args[]) {
+                        loadPreset(list.get(0));
+                    }
+                });
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error opening file");
+            }
+
+            //For some reason, opening a file while Sine is closed doesn't show the window
+            //But if some other window is opened, then also the sine window opens.
+            //So this will make a temp window to startup the real SINE window.
+            JFrame tmp = new JFrame();
+            tmp.setVisible(true);
+            //Thread.sleep(200);
+            tmp.dispose();
+        }
+        
+        else {
+            JOptionPane.showMessageDialog(null, "UUU");
+        }
+    }
+
+    public static void main(String args[]) throws InterruptedException {
         try {
             //check sound card
             PCSoundBackend test = new PCSoundBackend(44100, 1);
@@ -708,12 +728,13 @@ public class Main extends JFrame {
         //create and show form
         Main gui = new Main();
         gui.setVisible(true);
+        alreadyOpened = true;
+        
+        
         if (!RECEIVE_APPLE_EVENTS) {
             if (args.length == 1) { //if a file was given via command line parameter, load it
                 gui.loadPreset(new File(args[0]));
             }
         }
-
     }
-
 }
