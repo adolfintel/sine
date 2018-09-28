@@ -12,7 +12,7 @@ cd "${DIR}"
 rm -fr $APPNAME.app
 
 if [ $1 == "-r" ]; then
-	jar2app ../SINE/dist/SINE.jar -i $ICONNAME -r /Library/Java/JavaVirtualMachines/jdk1.7.0_80.jdk -b $BUNDLENAME -o $APPNAME.app
+	jar2app ../SINE/dist/SINE.jar -i $ICONNAME -r "/Library/Java/JavaVirtualMachines/jdk1.7.0_80.jdk/" -b $BUNDLENAME -o $APPNAME.app
 else
 	jar2app ../SINE/dist/SINE.jar -i $ICONNAME -b $BUNDLENAME -o $APPNAME.app
 fi
@@ -31,7 +31,7 @@ plutil -insert CFBundleDocumentTypes -xml '<array>
         <string>Owner</string>
         <key>LSItemContentTypes</key>
         <array>
-            <string>$BUNDLENAME.sin</string>
+            <string>$BUNDLENAME.$EXT</string>
         </array>
     </dict>
 </array>' $APPNAME.app/Contents/Info.plist
@@ -47,7 +47,7 @@ plutil -insert UTExportedTypeDeclarations -xml '<array>
         <key>UTTypeDescription</key>
         <string>$EXTDESC</string>
         <key>UTTypeIdentifier</key>
-        <string>$BUNDLENAME.sin</string>
+        <string>$BUNDLENAME.$EXT</string>
         <key>UTTypeTagSpecification</key>
         <dict>
             <key>public.filename-extension</key>

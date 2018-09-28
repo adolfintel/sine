@@ -68,7 +68,7 @@ import org.xml.sax.InputSource;
  */
 public class Main extends JFrame {
 
-    private static boolean alreadyOpened = false;
+    private static int windowCount = 0;
 
     private static final boolean DRAG_N_DROP_ENABLED = System.getProperty("os.name").toLowerCase().contains("win"); //drag n drop is only supported on windows, sorry
     private static final boolean RECEIVE_APPLE_EVENTS = System.getProperty("os.name").toLowerCase().startsWith("mac")
@@ -198,6 +198,7 @@ public class Main extends JFrame {
 
     public Main() throws InterruptedException {
         super();
+
         //initialize form
         setIconImage(Utils.loadUnscaled("/com/dosse/bwentrain/player/images/logoIcon.png").getImage());
         setLayout(null);
@@ -491,14 +492,23 @@ public class Main extends JFrame {
                 new Apple().setOpenFileHandler(new Apple.OpenFilesHandler() {
                     @Override
                     public void openFiles(List<File> list) {
-                        if (!alreadyOpened) {
-                            try {
-                                loadPreset(list.get(0));
-                            } catch (Throwable t) {
-                                JOptionPane.showMessageDialog(null, "Error opening file");
+
+                        try {
+                            if (list.size() >= 1) {
+                                if (windowCount == 0) {
+                                    loadPreset(list.get(0));
+                                } else {
+                                    Main m = new Main();
+                                    m.setVisible(true);
+                                    m.loadPreset(list.get(0));
+                                }
+                                windowCount++;
                             }
+                        } catch (Throwable t) {
+                            JOptionPane.showMessageDialog(null, "Error opening file");
                         }
                     }
+
                 });
             } catch (Throwable t) {
             }
@@ -529,6 +539,9 @@ public class Main extends JFrame {
                     return;
                 }
                 loadPreset(p); //load selected file
+                if (windowCount == 0) {
+                    windowCount++;
+                }
             }
         });
     }
@@ -630,7 +643,14 @@ public class Main extends JFrame {
     }
 
     private void quit() {
-        System.exit(0);
+        playerPanel.dispose();
+        if (windowCount <= 1) {
+            System.exit(0);
+        } else {
+            setVisible(false);
+            windowCount--;
+            dispose();
+        }
     }
 
     public static void main(String args[]) throws InterruptedException {
@@ -721,7 +741,6 @@ public class Main extends JFrame {
         //create and show form
         Main gui = new Main();
         gui.setVisible(true);
-        alreadyOpened = true;
 
         if (!RECEIVE_APPLE_EVENTS) {
             if (args.length == 1) { //if a file was given via command line parameter, load it
