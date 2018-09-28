@@ -67,22 +67,23 @@ import org.xml.sax.InputSource;
  * @author dosse
  */
 public class Main extends JFrame {
+
     private static boolean alreadyOpened = false;
-    
+
     private static final boolean DRAG_N_DROP_ENABLED = System.getProperty("os.name").toLowerCase().contains("win"); //drag n drop is only supported on windows, sorry
     private static final boolean RECEIVE_APPLE_EVENTS = System.getProperty("os.name").toLowerCase().startsWith("mac")
             || System.getProperty("os.name").toLowerCase().contains("os x"); //mac uses "events" for file opens instead of standard command line args because it's a special snowflake
 
     public static final float SCALE = calculateScale(); //used for DPI scaling. multiply each size by this factor.
-    
-    
+
     //calculates SCALE based on screen DPI. target DPI is 80, so if DPI=80, SCALE=1. Min DPI is 64
     //for mac version, dpi / 80 returns a big window. Using 1 as multiplier you'll get a decent-sized window.
     private static final float calculateScale() {
         float dpi = (float) Toolkit.getDefaultToolkit().getScreenResolution();
-        
-        if (RECEIVE_APPLE_EVENTS)
+
+        if (RECEIVE_APPLE_EVENTS) {
             return 1f;
+        }
         return (dpi < 64 ? 64 : dpi) / 80f;
     }
 
@@ -483,11 +484,33 @@ public class Main extends JFrame {
                 return false;
             }
         });
-        
+
         if (RECEIVE_APPLE_EVENTS) { //listener for mac file associations
-            openFileMac();
+            //if SINE is closed
+            try {
+                new Apple().setOpenFileHandler(new Apple.OpenFilesHandler() {
+                    @Override
+                    public void openFiles(List<File> list) {
+                        if (!alreadyOpened) {
+                            try {
+                                loadPreset(list.get(0));
+                            } catch (Throwable t) {
+                                JOptionPane.showMessageDialog(null, "Error opening file");
+                            }
+                        }
+                    }
+                });
+            } catch (Throwable t) {
+            }
+            //For some reason, opening a file while Sine is closed doesn't show the window
+            //But if some other window is opened, then also the sine window opens.
+            //So this will make a temp window to startup the real SINE window.
+            JFrame tmp = new JFrame();
+            tmp.setVisible(true);
+            //Thread.sleep(200);
+            tmp.dispose();
         }
-        
+
         //show the window centered horizontally
         int x = (int) (Toolkit.getDefaultToolkit().getScreenSize().width / 2 - getWidth() / 2);
         setLocation(x, 50);
@@ -609,32 +632,6 @@ public class Main extends JFrame {
     private void quit() {
         System.exit(0);
     }
-    
-    private void openFileMac() throws InterruptedException {
-        //if SINE is closed
-        if (! alreadyOpened) {
-            try {
-                new Apple().setOpenFileHandler(new Apple.OpenFilesHandler() {
-                    @Override
-                    public void openFiles(List<File> list) {
-                        //JOptionPane.showMessageDialog(null, "Aperto");
-
-                        loadPreset(list.get(0));
-                    }
-                });
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Error opening file");
-            }
-
-            //For some reason, opening a file while Sine is closed doesn't show the window
-            //But if some other window is opened, then also the sine window opens.
-            //So this will make a temp window to startup the real SINE window.
-            JFrame tmp = new JFrame();
-            tmp.setVisible(true);
-            //Thread.sleep(200);
-            tmp.dispose();
-        }
-    }
 
     public static void main(String args[]) throws InterruptedException {
         try {
@@ -725,7 +722,7 @@ public class Main extends JFrame {
         Main gui = new Main();
         gui.setVisible(true);
         alreadyOpened = true;
-        
+
         if (!RECEIVE_APPLE_EVENTS) {
             if (args.length == 1) { //if a file was given via command line parameter, load it
                 gui.loadPreset(new File(args[0]));

@@ -17,7 +17,7 @@
 			<string>Owner</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>$BUNDLENAME.myextension</string>
+				<string>$BUNDLENAME.sin</string>
 			</array>
 		</dict>
 	</array>
@@ -65,13 +65,13 @@
 			<key>UTTypeDescription</key>
 			<string>$EXTDESC</string>
 			<key>UTTypeIdentifier</key>
-			<string>$BUNDLENAME.myextension</string>
+			<string>$BUNDLENAME.sin</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
 				<string>$EXT</string>
 				<key>public.mime-type</key>
-				<string>application/octet-stream</string>
+				<string>application/xml</string>
 			</dict>
 		</dict>
 	</array>

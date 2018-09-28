@@ -20,8 +20,6 @@ fi
 mkdir $APPNAME.app/Contents/Java/lib
 cp ../SINE/dist/lib/* $APPNAME.app/Contents/Java/lib/
 
-#cp "example Info.plist" $APPNAME.app/Contents/Info.plist
-
 #add linking to .sin extension
 plutil -insert CFBundleDocumentTypes -xml '<array>
 	<dict>
@@ -33,7 +31,7 @@ plutil -insert CFBundleDocumentTypes -xml '<array>
         <string>Owner</string>
         <key>LSItemContentTypes</key>
         <array>
-            <string>$BUNDLENAME.myextension</string>
+            <string>$BUNDLENAME.sin</string>
         </array>
     </dict>
 </array>' $APPNAME.app/Contents/Info.plist
@@ -49,13 +47,13 @@ plutil -insert UTExportedTypeDeclarations -xml '<array>
         <key>UTTypeDescription</key>
         <string>$EXTDESC</string>
         <key>UTTypeIdentifier</key>
-        <string>$BUNDLENAME.myextension</string>
+        <string>$BUNDLENAME.sin</string>
         <key>UTTypeTagSpecification</key>
         <dict>
             <key>public.filename-extension</key>
             <string>$EXT</string>
             <key>public.mime-type</key>
-            <string>application/octet-stream</string>
+            <string>application/xml</string>
         </dict>
     </dict>
 </array>' $APPNAME.app/Contents/Info.plist
