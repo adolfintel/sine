@@ -68,12 +68,11 @@ import org.xml.sax.InputSource;
  */
 public class Main extends JFrame {
 
-    private static int windowCount = 0;
-
     private static final boolean DRAG_N_DROP_ENABLED = System.getProperty("os.name").toLowerCase().contains("win"); //drag n drop is only supported on windows, sorry
     private static final boolean RECEIVE_APPLE_EVENTS = System.getProperty("os.name").toLowerCase().startsWith("mac")
             || System.getProperty("os.name").toLowerCase().contains("os x"); //mac uses "events" for file opens instead of standard command line args because it's a special snowflake
 
+    public static boolean rejectAppleEvents = false; //used to block file opening while a dialog is open (like when exporting)
     public static final float SCALE = calculateScale(); //used for DPI scaling. multiply each size by this factor.
 
     //calculates SCALE based on screen DPI. target DPI is 80, so if DPI=80, SCALE=1. Min DPI is 64
@@ -487,22 +486,18 @@ public class Main extends JFrame {
         });
 
         if (RECEIVE_APPLE_EVENTS) { //listener for mac file associations
-            //if SINE is closed
+            
             try {
                 new Apple().setOpenFileHandler(new Apple.OpenFilesHandler() {
                     @Override
                     public void openFiles(List<File> list) {
-
+                        if (rejectAppleEvents)
+                            return;
+                        
                         try {
                             if (list.size() >= 1) {
-                                if (windowCount == 0) {
-                                    loadPreset(list.get(0));
-                                } else {
-                                    Main m = new Main();
-                                    m.setVisible(true);
-                                    m.loadPreset(list.get(0));
-                                }
-                                windowCount++;
+                                loadPreset(list.get(0));
+
                             }
                         } catch (Throwable t) {
                             JOptionPane.showMessageDialog(null, "Error opening file");
@@ -539,9 +534,6 @@ public class Main extends JFrame {
                     return;
                 }
                 loadPreset(p); //load selected file
-                if (windowCount == 0) {
-                    windowCount++;
-                }
             }
         });
     }
@@ -571,6 +563,7 @@ public class Main extends JFrame {
     }
 
     public void export() {
+        rejectAppleEvents = true;
         final Preset p = playerPanel.getCurrentPreset();
         if (p == null) { //no preset loaded (can't happen if the export option is disabled before a preset is loaded)
             return;
@@ -619,6 +612,7 @@ public class Main extends JFrame {
                     //export to selected file
                     ExportDialog.export(p, out, ExportDialog.FORMAT_WAV);
                 }
+                rejectAppleEvents = false;
             }
         });
     }
@@ -643,14 +637,7 @@ public class Main extends JFrame {
     }
 
     private void quit() {
-        playerPanel.dispose();
-        if (windowCount <= 1) {
-            System.exit(0);
-        } else {
-            setVisible(false);
-            windowCount--;
-            dispose();
-        }
+        System.exit(0);
     }
 
     public static void main(String args[]) throws InterruptedException {

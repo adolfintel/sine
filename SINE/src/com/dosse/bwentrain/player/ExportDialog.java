@@ -70,7 +70,7 @@ public class ExportDialog extends JDialog {
     
     public ExportDialog(final Preset p, final File f, final int format) {
         super(new JFrame(), true);
-        setModalityType(Dialog.ModalityType.MODELESS);
+        
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         setUndecorated(true);
         setSize(DIALOG_WIDTH, DIALOG_HEIGHT);
