@@ -24,6 +24,9 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.KeyEventDispatcher;
 import java.awt.KeyboardFocusManager;
+import java.awt.MouseInfo;
+import java.awt.Point;
+import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
@@ -69,13 +72,20 @@ import org.xml.sax.InputSource;
 public class Main extends JFrame {
 
     private static final boolean DRAG_N_DROP_ENABLED = System.getProperty("os.name").toLowerCase().contains("win"); //drag n drop is only supported on windows, sorry
-    private static final boolean RECEIVE_APPLE_EVENTS = System.getProperty("os.name").toLowerCase().startsWith("mac"); //mac uses "events" for file opens instead of standard command line args because it's a special snowflake
+    private static final boolean IS_MACOS = System.getProperty("os.name").toLowerCase().startsWith("mac")
+            || System.getProperty("os.name").toLowerCase().contains("os x"); //mac uses "events" for file opens instead of standard command line args because it's a special snowflake
 
+    public static boolean rejectAppleEvents = false; //used to block file opening while a dialog is open (like when exporting)
     public static final float SCALE = calculateScale(); //used for DPI scaling. multiply each size by this factor.
 
     //calculates SCALE based on screen DPI. target DPI is 80, so if DPI=80, SCALE=1. Min DPI is 64
+    //for mac version, dpi / 80 returns a big window. Using 1 as multiplier you'll get a decent-sized window.
     private static final float calculateScale() {
         float dpi = (float) Toolkit.getDefaultToolkit().getScreenResolution();
+
+        if (IS_MACOS) {
+            return 1f;
+        }
         return (dpi < 64 ? 64 : dpi) / 80f;
     }
 
@@ -190,6 +200,7 @@ public class Main extends JFrame {
 
     public Main() {
         super();
+
         //initialize form
         setIconImage(Utils.loadUnscaled("/com/dosse/bwentrain/player/images/logoIcon.png").getImage());
         setLayout(null);
@@ -476,26 +487,40 @@ public class Main extends JFrame {
                 return false;
             }
         });
-        if (RECEIVE_APPLE_EVENTS) { //listener for mac file associations
+
+        if (IS_MACOS) { //listener for mac file associations
+
             try {
-                Apple.setFileType("sin", "com.dosse.bwentrain.player"); //why of course, the plist file is not enough! did you think this was a working os or something?
                 new Apple().setOpenFileHandler(new Apple.OpenFilesHandler() {
                     @Override
                     public void openFiles(List<File> list) {
+                        if (rejectAppleEvents) {
+                            return;
+                        }
+
                         try {
-                            loadPreset(list.get(0));
-                            Apple.setFileType("sin", "com.dosse.bwentrain.player"); //let's do it again, just to be sure. seems to break the association by itself at times.
+                            if (list.size() >= 1) {
+                                loadPreset(list.get(0));
+
+                            }
                         } catch (Throwable t) {
+                            JOptionPane.showMessageDialog(null, "Error opening file");
                         }
                     }
+
                 });
             } catch (Throwable t) {
-                //sometimes this happens. dunno why
             }
+            //For some reason, opening a file while Sine is closed doesn't show the window
+            //But if some other window is opened, then also the sine window opens.
+            //So this will make a temp window to startup the real SINE window.
+            JFrame tmp = new JFrame();
+            tmp.setVisible(true);
+            tmp.dispose();
         }
-        //show the window centered horizontally
-        int x = (int) (Toolkit.getDefaultToolkit().getScreenSize().width / 2 - getWidth() / 2);
-        setLocation(x, 50);
+
+        //show the window centered
+        setLocationRelativeTo(null);
         fixUpLayout();
     }
 
@@ -540,6 +565,7 @@ public class Main extends JFrame {
     }
 
     public void export() {
+        rejectAppleEvents = true;
         final Preset p = playerPanel.getCurrentPreset();
         if (p == null) { //no preset loaded (can't happen if the export option is disabled before a preset is loaded)
             return;
@@ -588,6 +614,7 @@ public class Main extends JFrame {
                     //export to selected file
                     ExportDialog.export(p, out, ExportDialog.FORMAT_WAV);
                 }
+                rejectAppleEvents = false;
             }
         });
     }
@@ -703,12 +730,36 @@ public class Main extends JFrame {
         //create and show form
         Main gui = new Main();
         gui.setVisible(true);
-        if (!RECEIVE_APPLE_EVENTS) {
+
+        if (!IS_MACOS) {
             if (args.length == 1) { //if a file was given via command line parameter, load it
                 gui.loadPreset(new File(args[0]));
             }
         }
 
-    }
+        if (!IS_MACOS) {
+            /**
+             * Thread used to move the mouse pointer 1px to prevent system sleep. It
+             * moves the pointer two times to prevent not registering the movement
+             * when the pointer is at the corner of the screen. Not used on macOS
+             * because it requires Accessibility permissions.
+             */
+            new Thread() {
+                @Override
+                public void run() {
+                    try {
+                        Robot mouseRobot = new Robot();
+                        while (true) {
+                            Point pObj = MouseInfo.getPointerInfo().getLocation();
+                            mouseRobot.mouseMove(pObj.x + 1, pObj.y + 1);
+                            mouseRobot.mouseMove(pObj.x - 1, pObj.y - 1);
+                            Thread.sleep(1000 * 40);   //every 40 seconds
 
+                            //System.out.println("x: " + pObj.x + "  y: " + pObj.y);
+                        }
+                    } catch (Throwable ex) {}
+                }
+            }.start();
+        }
+    }
 }

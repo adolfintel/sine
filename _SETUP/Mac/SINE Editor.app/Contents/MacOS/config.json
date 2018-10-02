@@ -1,8 +1,0 @@
-{
-  "classPath": [
-    "SINE-Editor.jar"
-  ],
-  "mainClass": "com.dosse.bwentrain.editor.Main",
-  "vmArgs": [
-  ]
-}

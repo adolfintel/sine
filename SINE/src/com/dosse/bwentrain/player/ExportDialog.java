@@ -23,6 +23,7 @@ import com.dosse.bwentrain.sound.ISoundDevice;
 import com.dosse.bwentrain.sound.backends.flac.FLACFileSoundBackend;
 import com.dosse.bwentrain.sound.backends.mp3.MP3FileSoundBackend;
 import com.dosse.bwentrain.sound.backends.wav.WavFileSoundBackend;
+import java.awt.Dialog;
 import java.awt.KeyEventDispatcher;
 import java.awt.KeyboardFocusManager;
 import java.awt.Toolkit;
@@ -69,6 +70,7 @@ public class ExportDialog extends JDialog {
     
     public ExportDialog(final Preset p, final File f, final int format) {
         super(new JFrame(), true);
+        
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         setUndecorated(true);
         setSize(DIALOG_WIDTH, DIALOG_HEIGHT);
@@ -266,7 +268,7 @@ public class ExportDialog extends JDialog {
         d.setVisible(true);
         while (d.isVisible()) {
             try {
-                Thread.sleep(100);
+                Thread.sleep(100); 
             } catch (InterruptedException ex) {
             }
         }

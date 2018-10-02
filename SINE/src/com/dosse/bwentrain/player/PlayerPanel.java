@@ -221,4 +221,11 @@ public class PlayerPanel extends JPanel {
         status.setBounds(0, y, x - Main.GENERIC_MARGIN, BAR_HEIGHT); //status takes up rest of the line
         repaint(); //must force repaint on some systems
     }
+    
+    public void dispose(){
+        if(p!=null){
+            p.stopPlaying();
+            p=null;
+        }
+    }
 }

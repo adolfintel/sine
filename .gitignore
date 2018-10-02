@@ -1,0 +1,12 @@
+### macOS ###
+*.DS_Store
+.AppleDouble
+.LSOverride
+
+### NetBeans ###
+*/nbproject/private/
+*/build/
+*/nbbuild/
+*/dist/
+*/nbdist/
+*/.nb-gradle/
