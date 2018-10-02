@@ -246,6 +246,7 @@ public class Main extends javax.swing.JFrame {
                 return false;
             }
         });
+        setLocationRelativeTo(null); //center the window on the screen
     }
 
     private void forceLayoutUpdate() {
@@ -1159,7 +1160,6 @@ public class Main extends javax.swing.JFrame {
         }
         Locale.setDefault(Locale.Category.FORMAT, Locale.ENGLISH); //allows using the dot instead of the comma when inputting numbers
         Main e = new Main();
-        e.setLocationRelativeTo(null); //center the window on the screen
         e.setVisible(true);
         if (args.length == 1) { //if a file was specified via command line parameter, load it
             e.loadPreset(new File(args[0]));

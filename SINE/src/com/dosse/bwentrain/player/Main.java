@@ -69,9 +69,9 @@ import org.xml.sax.InputSource;
 public class Main extends JFrame {
 
     private static final boolean DRAG_N_DROP_ENABLED = System.getProperty("os.name").toLowerCase().contains("win"); //drag n drop is only supported on windows, sorry
-    private static final boolean RECEIVE_APPLE_EVENTS = System.getProperty("os.name").toLowerCase().startsWith("mac")
+    private static final boolean IS_MACOS = System.getProperty("os.name").toLowerCase().startsWith("mac")
             || System.getProperty("os.name").toLowerCase().contains("os x"); //mac uses "events" for file opens instead of standard command line args because it's a special snowflake
-
+    
     public static boolean rejectAppleEvents = false; //used to block file opening while a dialog is open (like when exporting)
     public static final float SCALE = calculateScale(); //used for DPI scaling. multiply each size by this factor.
 
@@ -80,7 +80,7 @@ public class Main extends JFrame {
     private static final float calculateScale() {
         float dpi = (float) Toolkit.getDefaultToolkit().getScreenResolution();
 
-        if (RECEIVE_APPLE_EVENTS) {
+        if (IS_MACOS) {
             return 1f;
         }
         return (dpi < 64 ? 64 : dpi) / 80f;
@@ -195,7 +195,7 @@ public class Main extends JFrame {
     private final MainMenu mainMenu; //the menu opened when clicking the menu button
     private final MainMenu.MenuItem export; //pointer to the export option in the menu, so it can be enabled/disabled when necessary
 
-    public Main() throws InterruptedException {
+    public Main() {
         super();
 
         //initialize form
@@ -485,7 +485,7 @@ public class Main extends JFrame {
             }
         });
 
-        if (RECEIVE_APPLE_EVENTS) { //listener for mac file associations
+        if (IS_MACOS) { //listener for mac file associations
             
             try {
                 new Apple().setOpenFileHandler(new Apple.OpenFilesHandler() {
@@ -512,7 +512,6 @@ public class Main extends JFrame {
             //So this will make a temp window to startup the real SINE window.
             JFrame tmp = new JFrame();
             tmp.setVisible(true);
-            //Thread.sleep(200);
             tmp.dispose();
         }
 
@@ -639,7 +638,7 @@ public class Main extends JFrame {
         System.exit(0);
     }
 
-    public static void main(String args[]) throws InterruptedException {
+    public static void main(String args[]) {
         try {
             //check sound card
             PCSoundBackend test = new PCSoundBackend(44100, 1);
@@ -728,7 +727,7 @@ public class Main extends JFrame {
         Main gui = new Main();
         gui.setVisible(true);
 
-        if (!RECEIVE_APPLE_EVENTS) {
+        if (!IS_MACOS) {
             if (args.length == 1) { //if a file was given via command line parameter, load it
                 gui.loadPreset(new File(args[0]));
             }
