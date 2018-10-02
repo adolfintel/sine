@@ -11,9 +11,9 @@ cd "${DIR}"
 rm -fr "out/$APPNAME.app"
 
 if [ $1 == "-r" ]; then
-	jar2app ../SINE-Editor/dist/SINE-Editor.jar -i $ICONNAME -r "/Library/Java/JavaVirtualMachines/jdk1.7.0_80.jdk/" -b "$BUNDLENAME" -v "$VERSION" -s "$VERSION" -o "out/$APPNAME.app"
+	jar2app ../SINE-Editor/dist/SINE-Editor.jar -i $ICONNAME -r "/Library/Java/JavaVirtualMachines/jdk1.7.0_80.jdk/" -b "$BUNDLENAME" -v "$VERSION" -s "$VERSION" -o "SINE/$APPNAME.app"
 else
-	jar2app ../SINE-Editor/dist/SINE-Editor.jar -i $ICONNAME -b "$BUNDLENAME" -v "$VERSION" -s "$VERSION" -o "out/$APPNAME.app"
+	jar2app ../SINE-Editor/dist/SINE-Editor.jar -i $ICONNAME -b "$BUNDLENAME" -v "$VERSION" -s "$VERSION" -o "SINE/$APPNAME.app"
 fi
 
 mkdir "out/$APPNAME.app/Contents/Java/lib"
