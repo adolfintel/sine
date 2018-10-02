@@ -24,8 +24,8 @@ This PC Version include an Editor to make your own sessions.
 [Multiplatform](http://downloads.fdossena.com/geth.php?r=sine-pcbin) (Requires [Java](http://java.com))
 
 ## Compatibility
-* Windows XP or newer
-* Mac OS X 10.9 or newer
+* Windows
+* macOS
 * Any platform supported by Java SE 7 or newer
  
 ## Usage
@@ -40,7 +40,7 @@ To build the installer for Windows, you'll need [Inno Setup](http://www.jrsoftwa
 ![Screenshot](http://fdossena.com/sine/website1.png)
 
 ## License
-Copyright (C) 2016 Federico Dossena
+Copyright (C) 2014-2018 Federico Dossena
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
