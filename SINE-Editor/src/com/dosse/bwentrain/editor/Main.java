@@ -57,10 +57,14 @@ import org.xml.sax.InputSource;
  */
 public class Main extends javax.swing.JFrame {
 
+    private static final boolean RECEIVE_APPLE_EVENTS = System.getProperty("os.name").toLowerCase().startsWith("mac")
+            || System.getProperty("os.name").toLowerCase().contains("os x"); //mac uses "events" for file opens instead of standard command line args because it's a special snowflake
     public static final float SCALE = calculateScale(); //used for DPI scaling. multiply each size by this factor.
     //calculates SCALE based on screen DPI. target DPI is 96, so if DPI=96, SCALE=1. Min DPI is 72.
 
     private static final float calculateScale() {
+        if (RECEIVE_APPLE_EVENTS)
+            return 1;
         float dpi = (float) Toolkit.getDefaultToolkit().getScreenResolution();
         return (dpi < 72 ? 72 : dpi) / 96f;
     }
@@ -1155,6 +1159,7 @@ public class Main extends javax.swing.JFrame {
         }
         Locale.setDefault(Locale.Category.FORMAT, Locale.ENGLISH); //allows using the dot instead of the comma when inputting numbers
         Main e = new Main();
+        e.setLocationRelativeTo(null); //center the window on the screen
         e.setVisible(true);
         if (args.length == 1) { //if a file was specified via command line parameter, load it
             e.loadPreset(new File(args[0]));

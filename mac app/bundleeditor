@@ -1,0 +1,22 @@
+#!/bin/bash
+#using https://github.com/Jorl17/jar2app
+APPNAME="SINE Editor"
+BUNDLENAME="com.dosse.bwentrain.editor"
+ICONNAME="iconeditor.icns"
+VERSION="1.8.7"
+
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+cd "${DIR}"
+
+rm -fr "out/$APPNAME.app"
+
+if [ $1 == "-r" ]; then
+	jar2app ../SINE-Editor/dist/SINE-Editor.jar -i $ICONNAME -r "/Library/Java/JavaVirtualMachines/jdk1.7.0_80.jdk/" -b "$BUNDLENAME" -v "$VERSION" -s "$VERSION" -o "out/$APPNAME.app"
+else
+	jar2app ../SINE-Editor/dist/SINE-Editor.jar -i $ICONNAME -b "$BUNDLENAME" -v "$VERSION" -s "$VERSION" -o "out/$APPNAME.app"
+fi
+
+mkdir "out/$APPNAME.app/Contents/Java/lib"
+cp "../SINE-Editor/dist/lib/"* "out/$APPNAME.app/Contents/Java/lib/"
+
+

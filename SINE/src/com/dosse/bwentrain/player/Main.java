@@ -516,9 +516,8 @@ public class Main extends JFrame {
             tmp.dispose();
         }
 
-        //show the window centered horizontally
-        int x = (int) (Toolkit.getDefaultToolkit().getScreenSize().width / 2 - getWidth() / 2);
-        setLocation(x, 50);
+        //show the window centered
+        setLocationRelativeTo(null);
         fixUpLayout();
     }
 
