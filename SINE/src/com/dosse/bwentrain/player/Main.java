@@ -24,6 +24,9 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.KeyEventDispatcher;
 import java.awt.KeyboardFocusManager;
+import java.awt.MouseInfo;
+import java.awt.Point;
+import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
@@ -71,7 +74,7 @@ public class Main extends JFrame {
     private static final boolean DRAG_N_DROP_ENABLED = System.getProperty("os.name").toLowerCase().contains("win"); //drag n drop is only supported on windows, sorry
     private static final boolean IS_MACOS = System.getProperty("os.name").toLowerCase().startsWith("mac")
             || System.getProperty("os.name").toLowerCase().contains("os x"); //mac uses "events" for file opens instead of standard command line args because it's a special snowflake
-    
+
     public static boolean rejectAppleEvents = false; //used to block file opening while a dialog is open (like when exporting)
     public static final float SCALE = calculateScale(); //used for DPI scaling. multiply each size by this factor.
 
@@ -486,14 +489,15 @@ public class Main extends JFrame {
         });
 
         if (IS_MACOS) { //listener for mac file associations
-            
+
             try {
                 new Apple().setOpenFileHandler(new Apple.OpenFilesHandler() {
                     @Override
                     public void openFiles(List<File> list) {
-                        if (rejectAppleEvents)
+                        if (rejectAppleEvents) {
                             return;
-                        
+                        }
+
                         try {
                             if (list.size() >= 1) {
                                 loadPreset(list.get(0));
@@ -731,6 +735,31 @@ public class Main extends JFrame {
             if (args.length == 1) { //if a file was given via command line parameter, load it
                 gui.loadPreset(new File(args[0]));
             }
+        }
+
+        if (!IS_MACOS) {
+            /**
+             * Thread used to move the mouse pointer 1px to prevent system sleep. It
+             * moves the pointer two times to prevent not registering the movement
+             * when the pointer is at the corner of the screen. Not used on macOS
+             * because it requires Accessibility permissions.
+             */
+            new Thread() {
+                @Override
+                public void run() {
+                    try {
+                        Robot mouseRobot = new Robot();
+                        while (true) {
+                            Point pObj = MouseInfo.getPointerInfo().getLocation();
+                            mouseRobot.mouseMove(pObj.x + 1, pObj.y + 1);
+                            mouseRobot.mouseMove(pObj.x - 1, pObj.y - 1);
+                            Thread.sleep(1000 * 40);   //every 40 seconds
+
+                            //System.out.println("x: " + pObj.x + "  y: " + pObj.y);
+                        }
+                    } catch (Throwable ex) {}
+                }
+            }.start();
         }
     }
 }

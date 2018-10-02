@@ -1,8 +1,0 @@
-{
-  "classPath": [
-    "SINE.jar"
-  ],
-  "mainClass": "com.dosse.bwentrain.player.Main",
-  "vmArgs": [
-  ]
-}
