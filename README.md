@@ -19,8 +19,6 @@ This PC Version include an Editor to make your own sessions.
 
 [.deb package for Ubuntu, Debian, etc.](http://downloads.fdossena.com/geth.php?r=sine-deb)
 
-[Arch Linux package (from AUR)](https://aur.archlinux.org/packages/sine/)
-
 [Multiplatform](http://downloads.fdossena.com/geth.php?r=sine-pcbin) (Requires [Java](http://java.com))
 
 ## Compatibility
