@@ -46,8 +46,11 @@ import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
+import java.io.IOException;
 import java.net.URI;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -739,10 +742,10 @@ public class Main extends JFrame {
 
         if (!IS_MACOS) {
             /**
-             * Thread used to move the mouse pointer 1px to prevent system sleep. It
-             * moves the pointer two times to prevent not registering the movement
-             * when the pointer is at the corner of the screen. Not used on macOS
-             * because it requires Accessibility permissions.
+             * Thread used to move the mouse pointer 1px to prevent system
+             * sleep. It moves the pointer two times to prevent not registering
+             * the movement when the pointer is at the corner of the screen. Not
+             * used on macOS because it requires Accessibility permissions.
              */
             new Thread() {
                 @Override
@@ -757,9 +760,26 @@ public class Main extends JFrame {
 
                             //System.out.println("x: " + pObj.x + "  y: " + pObj.y);
                         }
-                    } catch (Throwable ex) {}
+                    } catch (Throwable ex) {
+                    }
                 }
             }.start();
+        } else {
+            try {
+                /**
+                 * Thread used to launch caffeinate command to prevent system
+                 * sleep on macOS. -d prevents display sleep, -i prevents idle
+                 * sleep, -u simulates user actions
+                 */
+                final Process process = Runtime.getRuntime().exec("caffeinate -di -u");
+                Runtime.getRuntime().addShutdownHook(new Thread() {
+                    public void run() {
+                        process.destroy();
+                    }
+                });
+                process.waitFor();
+            } catch (Throwable ex) {
+            }
         }
     }
 }
