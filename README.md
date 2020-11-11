@@ -10,16 +10,16 @@ Isochronic tones are a commonly used aural stimuli for Brainwave Entrainment, co
 This PC Version include an Editor to make your own sessions.
  
 ## Website
-[SINE Isochronic Entrainer](http://isochronic.io/)
+[SINE Isochronic Entrainer](https://sine.fdossena.com/)
 
 ## Download
-[Installer for Windows](http://downloads.fdossena.com/geth.php?r=sine-win)
+[Installer for Windows](https://downloads.fdossena.com/geth.php?r=sine-win)
 
-[Mac App](http://downloads.fdossena.com/geth.php?r=sine-mac)
+[Mac App](https://downloads.fdossena.com/geth.php?r=sine-mac)
 
-[.deb package for Ubuntu, Debian, etc.](http://downloads.fdossena.com/geth.php?r=sine-deb)
+[.deb package for Ubuntu, Debian, etc.](https://downloads.fdossena.com/geth.php?r=sine-deb)
 
-[Multiplatform](http://downloads.fdossena.com/geth.php?r=sine-pcbin) (Requires [Java](http://java.com))
+[Multiplatform](https://downloads.fdossena.com/geth.php?r=sine-pcbin) (Requires [Java](https://java.com))
 
 ## Compatibility
 * Windows
@@ -30,15 +30,15 @@ This PC Version include an Editor to make your own sessions.
 Import the projects into Netbeans.
 
 _SETUP contains all the files used to build the GNU/Linux packages, the installer for Windows and the Mac app packages.
-To build the installer for Windows, you'll need [Inno Setup](http://www.jrsoftware.org/isinfo.php) and [launch4j](http://launch4j.sourceforge.net/)
+To build the installer for Windows, you'll need [Inno Setup](https://www.jrsoftware.org/isinfo.php) and [launch4j](https://launch4j.sourceforge.net/)
 
 ## Screenshots
-![Screenshot](http://fdossena.com/sine/pc1.png)
-![Screenshot](http://fdossena.com/sine/pc2.png)
-![Screenshot](http://fdossena.com/sine/website1.png)
+![Screenshot](https://fdossena.com/sine/pc1.png)
+![Screenshot](https://fdossena.com/sine/pc2.png)
+![Screenshot](https://fdossena.com/sine/website1.png)
 
 ## License
-Copyright (C) 2014-2018 Federico Dossena
+Copyright (C) 2014-2020 Federico Dossena
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

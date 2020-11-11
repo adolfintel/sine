@@ -26,11 +26,11 @@
   </jre>
   <versionInfo>
     <fileVersion>1.0.0.0</fileVersion>
-    <txtFileVersion>1.8.7</txtFileVersion>
+    <txtFileVersion>1.8.8</txtFileVersion>
     <fileDescription>SINE Isochronic Entrainer - Editor</fileDescription>
-    <copyright>2014-2018 Federico Dossena</copyright>
-    <productVersion>1.8.7.0</productVersion>
-    <txtProductVersion>1.8.7</txtProductVersion>
+    <copyright>2014-2020 Federico Dossena</copyright>
+    <productVersion>1.8.8.0</productVersion>
+    <txtProductVersion>1.8.8</txtProductVersion>
     <productName>SINE Isochronic Entrainer - Editor</productName>
     <companyName>Federico Dossena</companyName>
     <internalName>SINE-Editor</internalName>

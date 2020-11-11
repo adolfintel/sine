@@ -1,11 +1,11 @@
 [Setup]
 AppId={{1E6C2953-D449-4B16-A7EA-FA50E0512B8F}
 AppName="SINE Isochronic Entrainer"
-AppVersion="1.8.7"
+AppVersion="1.8.8"
 AppPublisher="Federico Dossena"
-AppPublisherURL="http://isochronic.io"
-AppSupportURL="http://isochronic.io"
-AppUpdatesURL="http://isochronic.io"
+AppPublisherURL="https://sine.fdossena.com"
+AppSupportURL="https://sine.fdossena.com"
+AppUpdatesURL="https://sine.fdossena.com"
 DefaultDirName={pf}\SINE
 DefaultGroupName="SINE Isochronic Entrainer"
 DisableProgramGroupPage=yes
